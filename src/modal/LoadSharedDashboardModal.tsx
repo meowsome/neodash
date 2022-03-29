@@ -31,6 +31,9 @@ export const NeoLoadSharedDashboardModal = ({ shareDetails, onResetShareDetails,
         onResetShareDetails();
     };
 
+    // Bypass dialog for loading external dashboard
+    return onConfirmLoadSharedDashboard();
+
     return (
         <div>
             <Dialog maxWidth={"lg"} open={shareDetails !== undefined} aria-labelledby="form-dialog-title">
