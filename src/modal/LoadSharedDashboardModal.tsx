@@ -32,8 +32,9 @@ export const NeoLoadSharedDashboardModal = ({ shareDetails, onResetShareDetails,
     };
 
     // Bypass dialog for loading external dashboard
-    onConfirmLoadSharedDashboard();
-    return;
+    return (
+        <div>{onConfirmLoadSharedDashboard()}</div>
+    );
 
     return (
         <div>
