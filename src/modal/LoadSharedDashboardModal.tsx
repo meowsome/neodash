@@ -45,7 +45,7 @@ export const NeoLoadSharedDashboardModal = ({ shareDetails, onResetShareDetails,
                         marginBottom: "-8px",
                         marginRight: "5px",
                         paddingBottom: "5px"
-                    }} /> Loading Dashboard
+                    }} /> Loading Dashboard TESTING
 
                     <IconButton onClick={handleClose} style={{ padding: "3px", float: "right" }}>
                         <Badge badgeContent={""} >
