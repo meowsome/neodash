@@ -73,7 +73,7 @@ export const REPORT_TYPES = {
         useNodePropsAsFields: true,
         autoAssignSelectedProperties: true,
         component: NeoGraphChart,
-        maxRecords: 1000,
+        maxRecords: 50000,
         settings: {
             "nodeColorScheme": {
                 label: "Node Color Scheme",
