@@ -270,7 +270,9 @@ const NeoGraphChart = (props: ChartProps) => {
             return node.labels;
         }
         if (selectedProp == "(no label)") {
-            return node.properties["data"] + " (" + node.properties["count"] + ")";
+            // Choose "ct" property if exists, otherwise use "count"
+            var countProperty = (node.properties.hasOwnProperty("ct")) ? "ct" : "count";
+            return node.properties["data"] + " (" + node.properties[countProperty] + ")";
         }
         return node.properties[selectedProp] ? node.properties[selectedProp] : "";
     }
