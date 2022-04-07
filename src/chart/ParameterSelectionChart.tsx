@@ -77,27 +77,28 @@ const NeoParameterSelectionChart = (props: ChartProps) => {
             :
             <Autocomplete
                 id="autocomplete"
+                multiple="true"
+                key="true"
                 options={extraRecords.map(r => r["_fields"] && r["_fields"][0] !== null ? r["_fields"][0] : "(no data)").sort()}
                 getOptionLabel={(option) => option ? option.toString() : ""}
                 style={{ width: 300, marginLeft: "15px", marginTop: "5px" }}
-                inputValue={inputText}
                 onInputChange={(event, value) => {
                     setInputText("" + value);
                     debouncedQueryCallback(query, { input: ""+value }, setExtraRecords);
                 }}
                 getOptionSelected={(option, value) => (option && option.toString()) === (value && value.toString())}
-                value={value ? value.toString() : "" + currentValue}
-                onChange={(event, newValue) => {
-                    setValue(newValue);
-                    setInputText("" + newValue);
+                onChange={(event, values) => {
 
-                    if (newValue && newValue["low"]) {
-                        newValue = newValue["low"];
-                    }
-                    if (newValue == null && clearParameterOnFieldClear) {
+
+                    if (values == null && clearParameterOnFieldClear) {
                         props.setGlobalParameter(parameter, undefined);
                     } else {
-                        props.setGlobalParameter(parameter, newValue);
+                        var combined = values.join(",");
+
+                        setInputText("" + combined);
+                        setValue(combined);
+
+                        props.setGlobalParameter(parameter, combined);
                     }
                 }}
                 renderInput={(params) => <TextField {...params} InputLabelProps={{ shrink: true }} 
